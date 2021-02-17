@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { Header } from './components/Header/Header';
 
 function App() {
     return (
@@ -15,17 +16,7 @@ function App() {
 
 export default App;
 
-function Header() {
-    return (
-        <div className="todoList-header">
-            <h3 className="todoList-header__title">What to Learn</h3>
-            <div className="todoList-newTaskForm">
-                <input type="text" placeholder="title"/>
-                <button>Add</button>
-            </div>
-        </div>
-    )
-}
+
 
 function Todolist() {
     return (
