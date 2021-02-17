@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Header } from './components/Header/Header';
+import {Footer} from "./components/Footer/Footer";
 
 function App() {
     return (
@@ -44,12 +45,3 @@ function Todolist() {
     )
 }
 
-function Footer() {
-    return (
-        <div className="todoList-footer">
-            <button>All</button>
-            <button>Completed</button>
-            <button>Active</button>
-        </div>
-    )
-}
