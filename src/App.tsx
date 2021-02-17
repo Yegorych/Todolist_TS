@@ -5,13 +5,7 @@ function App() {
   return (
       <div className="App">
         <div className="todoList">
-          <div className="todoList-header">
-            <h3 className="todoList-header__title">What to Learn</h3>
-            <div className="todoList-newTaskForm">
-              <input type="text" placeholder="title"/>
-              <button>Add</button>
-            </div>
-          </div>
+          <Header/>
           <div className="todoList-tasks">
             <div className="todoList-task">
               <input type="checkbox" checked={true}/>
@@ -41,3 +35,15 @@ function App() {
 }
 
 export default App;
+
+function Header() {
+  return (
+      <div className="todoList-header">
+        <h3 className="todoList-header__title">What to Learn</h3>
+        <div className="todoList-newTaskForm">
+          <input type="text" placeholder="title"/>
+          <button>Add</button>
+        </div>
+      </div>
+  )
+}
