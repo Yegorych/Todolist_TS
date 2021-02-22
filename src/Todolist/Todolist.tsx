@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, KeyboardEvent, useState} from "react";
 import {FilterValueType} from "../App";
 
 type TaskType = {
@@ -18,38 +18,60 @@ type PropsType = {
 
 export function Todolist(props: PropsType) {
 
-    const addTask = () => {props.addTask(newTaskTitle)
-        setNewTaskTitle('')}
+    const addTask = () => {
+        props.addTask(newTaskTitle)
+        setNewTaskTitle('')
+    }
     const [newTaskTitle, setNewTaskTitle] = useState("")
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setNewTaskTitle(e.currentTarget.value)
+    }
+    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            addTask()
+        }
+    }
+    const onAllClickHandler = () => {
+        props.changeFilter("all")
+    }
+    const onActiveClickHandler = () => {
+        props.changeFilter("active")
+    }
+    const onCompletedClickHandler = () => {
+        props.changeFilter("completed")
+    }
 
     return (
         <div className={"todolist"}>
             <h3>{props.title}</h3>
             <div>
                 <input value={newTaskTitle}
-                       onChange={(e) => {
-                           setNewTaskTitle(e.currentTarget.value)}}
-                       onKeyPress={ (e) => {
-                           if (e.key === 'Enter') {addTask()}
-                       }}
+                       onChange={onChangeHandler}
+                       onKeyPress={onKeyPressHandler}
                 />
                 <button onClick={addTask}>+</button>
             </div>
             <ul>
-                {props.tasks.map(t => <li key={t.id}>
-                        <input type="checkbox" checked={t.isDone}/>
-                        <span>{t.title}</span>
-                        <button onClick={ () => {
+                {props.tasks.map(t => {
+                        const onClickHandler = () => {
                             props.removeTask(t.id)
-
-                        }}>x</button>
-                    </li>
+                        }
+                        return <li key={t.id}>
+                            <input type="checkbox" checked={t.isDone}/>
+                            <span>{t.title}</span>
+                            <button onClick={onClickHandler}>x
+                            </button>
+                        </li>
+                    }
                 )}
             </ul>
             <div>
-                <button onClick={ () => {props.changeFilter("all")}}>All</button>
-                <button onClick={ () => {props.changeFilter("active")}}>Active</button>
-                <button onClick={ () => {props.changeFilter("completed")}}>Completed</button>
+                <button onClick={onAllClickHandler}>All
+                </button>
+                <button onClick={onActiveClickHandler}>Active
+                </button>
+                <button onClick={onCompletedClickHandler}>Completed
+                </button>
             </div>
 
         </div>
