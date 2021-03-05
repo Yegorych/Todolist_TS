@@ -32,7 +32,7 @@ function App() {
     }
 
     let tasksForTodolist = tasks;
-    if (filter === "active") {
+    if (filter === "active"){
         tasksForTodolist = tasks.filter(t => t.isDone === false)
     }
     if (filter === "completed") {
@@ -54,6 +54,7 @@ function App() {
                     changeFilter={changeFilter}
                     addTask={addTask}
                     changeTaskStatus={changeStatus}
+                    filter={filter}
                 />
             </div>
         </div>

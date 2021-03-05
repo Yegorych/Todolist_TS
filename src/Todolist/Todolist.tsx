@@ -13,6 +13,7 @@ type PropsType = {
     removeTask: (id: string) => void
     changeFilter: (value: FilterValueType) => void
     addTask: (title: string) => void
+    filter: FilterValueType
     changeTaskStatus: (id: string, isDone: boolean) => void
 
 }
@@ -73,7 +74,9 @@ export function Todolist(props: PropsType) {
                             let newIsDoneValue = e.currentTarget.checked
                            props.changeTaskStatus(t.id, newIsDoneValue)
                         }
-                        return <li key={t.id}>
+                        return <li key={t.id}
+                                   className={t.isDone ? "is-done" : ''}
+                        >
                             <input type="checkbox"
                                    onChange={onChangeHandler}
                                    checked={t.isDone}
@@ -85,11 +88,11 @@ export function Todolist(props: PropsType) {
                 )}
             </ul>
             <div>
-                <button onClick={onAllClickHandler}>All
+                <button className={props.filter === 'all' ? "active-filter" : ''} onClick={onAllClickHandler}>All
                 </button>
-                <button onClick={onActiveClickHandler}>Active
+                <button className={props.filter === 'active' ? "active-filter" : ''} onClick={onActiveClickHandler}>Active
                 </button>
-                <button onClick={onCompletedClickHandler}>Completed
+                <button className={props.filter === 'completed' ? "active-filter" : ''} onClick={onCompletedClickHandler}>Completed
                 </button>
             </div>
 

@@ -1,23 +1,26 @@
 .App {
   display: flex;
+  padding: 30px;
 }
 
-.todoList {
+/*.todoList {
   width: 500px;
   margin: 0 auto;
 }
 
 .todoList > div {
   padding: 10px;
-}
-
-.todoList-task {
-
-}
+}*/
 .error {
   border: red 1px solid;
 }
 
 .error-message {
   color: red;
+}
+.active-filter {
+  background-color: aquamarine;
+}
+.is-done {
+  opacity: 0.5;
 }
