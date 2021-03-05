@@ -19,10 +19,7 @@ type PropsType = {
 
 export function Todolist(props: PropsType) {
 
-    const addTask = () => {
-        props.addTask(newTaskTitle)
-        setNewTaskTitle('')
-    }
+    const [title, setTitle] = useState("")
     const [newTaskTitle, setNewTaskTitle] = useState("")
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewTaskTitle(e.currentTarget.value)
@@ -31,6 +28,14 @@ export function Todolist(props: PropsType) {
         if (e.key === 'Enter') {
             addTask()
         }
+    }
+    const addTask = () => {
+        if(title.trim() !== "") {
+            props.addTask(title.trim())
+            setTitle("")
+        }
+        props.addTask(newTaskTitle)
+        setNewTaskTitle('')
     }
     const onAllClickHandler = () => {
         props.changeFilter("all")
@@ -67,8 +72,7 @@ export function Todolist(props: PropsType) {
                                    checked={t.isDone}
                             />
                             <span>{t.title}</span>
-                            <button onClick={onClickHandler}>x
-                            </button>
+                            <button onClick={onClickHandler}>x</button>
                         </li>
                     }
                 )}

@@ -18,13 +18,11 @@ function App() {
         tasks = tasks.filter(t => t.id !== id)
         setTasks(tasks)
     }
-
     function addTask(title: string) {
         let newTask = {id: v1(), title: title, isDone: false}
         let newTasks = [newTask, ...tasks]
         setTasks(newTasks)
     }
-
     function changeStatus(id: string, isDone: boolean) {
         let task = tasks.find(t => t.id === id)
         if (task) {
