@@ -4,6 +4,11 @@ import {Todolist} from "./Todolist/Todolist";
 import {v1} from "uuid";
 
 export type FilterValueType = "all" | "active" | "completed"
+export type TodolistType = {
+    id: string
+    title: string
+    filter: string
+}
 
 function App() {
 
@@ -13,6 +18,18 @@ function App() {
         {id: v1(), title: "ReactJS", isDone: false},
     ])
     let [filter, setFilter] = useState<FilterValueType>("all")
+    let [todolist, setTodolist] = useState<Array<TodolistType>>([
+        {
+            id: v1(),
+            title: 'What to learn',
+            filter: 'all'
+        },
+        {
+            id: v1(),
+            title: 'What to buy',
+            filter: 'all'
+        }
+    ])
 
     function removeTask(id: string) {
         tasks = tasks.filter(t => t.id !== id)
