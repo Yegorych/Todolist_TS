@@ -12,7 +12,7 @@ type PropsType = {
     title: string
     tasks: Array<TaskType>
     removeTask: (id: string) => void
-    changeFilter: (value: FilterValueType) => void
+    changeFilter: (value: FilterValueType, tolistId: string) => void
     addTask: (title: string) => void
     filter: FilterValueType
     changeTaskStatus: (id: string, isDone: boolean) => void
@@ -45,13 +45,13 @@ export function Todolist(props: PropsType) {
     }
 
     const onAllClickHandler = () => {
-        props.changeFilter("all")
+        props.changeFilter("all", props.id)
     }
     const onActiveClickHandler = () => {
-        props.changeFilter("active")
+        props.changeFilter("active", props.id)
     }
     const onCompletedClickHandler = () => {
-        props.changeFilter("completed")
+        props.changeFilter("completed", props.id)
     }
 
     return (
