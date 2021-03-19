@@ -48,14 +48,6 @@ function App() {
         }
     }
 
-    let tasksForTodolist = tasks;
-    if (filter === "active"){
-        tasksForTodolist = tasks.filter(t => t.isDone === false)
-    }
-    if (filter === "completed") {
-        tasksForTodolist = tasks.filter(t => t.isDone === true)
-    }
-
     function changeFilter(value: FilterValueType) {
         setFilter(value)
     }
@@ -66,15 +58,24 @@ function App() {
 
             {
                 todolist.map(tl => {
+                    let tasksForTodolist = tasks;
+                    if (tl.filter === "active"){
+                        tasksForTodolist = tasks.filter(t => t.isDone === false)
+                    }
+                    if (tl.filter === "completed") {
+                        tasksForTodolist = tasks.filter(t => t.isDone === true)
+                    }
                     return (
                         <Todolist
-                            title="What to learn"
+                            key={tl.id}
+                            id={tl.id}
+                            title={tl.title}
                             tasks={tasksForTodolist}
                             removeTask={removeTask}
                             changeFilter={changeFilter}
                             addTask={addTask}
                             changeTaskStatus={changeStatus}
-                            filter={filter}
+                            filter={tl.filter}
                         />
                     )
                 })
