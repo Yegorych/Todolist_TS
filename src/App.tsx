@@ -12,25 +12,37 @@ export type TodolistType = {
 
 function App() {
 
-    let [tasks, setTasks] = useState([
+    /*let [tasks, setTasks] = useState([
         {id: v1(), title: "HTML&CSS", isDone: true},
         {id: v1(), title: "JS", isDone: true},
         {id: v1(), title: "ReactJS", isDone: false},
-    ])
-    // let [todolist, setTodolists] = useState
+    ])*/
+
+    let todolistId1 = v1()
+    let todolistId2 = v1()
 
     let [todolists, setTodolists] = useState <Array<TodolistType>>([
         {
-            id: v1(),
+            id: todolistId1,
             title: 'What to learn',
             filter: 'active'
         },
         {
-            id: v1(),
+            id: todolistId2,
             title: 'What to buy',
             filter: 'completed'
         }
     ])
+    let [tasks, setTasks] = useState({
+        [todolistId1]: [
+            {id: v1(), title: 'HTML & CSS', isDone: true},
+            {id: v1(), title: 'React', isDone: true}
+        ],
+        [todolistId2]: [
+            {id: v1(), title: 'MacBook', isDone: true},
+            {id: v1(), title: 'Milk', isDone: true}
+        ]
+    })
 
     function removeTask(id: string) {
         tasks = tasks.filter(t => t.id !== id)
