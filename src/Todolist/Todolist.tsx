@@ -56,8 +56,11 @@ export function Todolist(props: PropsType) {
 
     return (
         <div className={"todolist"}>
-            <h3>{props.title}</h3>
+            <h3>
+                {props.title}
+                <button onClick={ () => {alert('delete')}}>x</button></h3>
             <div>
+
                 <input value={newTaskTitle}
                        onChange={onChangeHandler}
                        onKeyPress={onKeyPressHandler}
@@ -89,11 +92,14 @@ export function Todolist(props: PropsType) {
                 )}
             </ul>
             <div>
-                <button className={props.filter === 'all' ? "active-filter" : ''} onClick={onAllClickHandler}>All
+                <button className={props.filter === 'all' ? "active-filter" : ''}
+                        onClick={onAllClickHandler}>All
                 </button>
-                <button className={props.filter === 'active' ? "active-filter" : ''} onClick={onActiveClickHandler}>Active
+                <button className={props.filter === 'active' ? "active-filter" : ''}
+                        onClick={onActiveClickHandler}>Active
                 </button>
-                <button className={props.filter === 'completed' ? "active-filter" : ''} onClick={onCompletedClickHandler}>Completed
+                <button className={props.filter === 'completed' ? "active-filter" : ''}
+                        onClick={onCompletedClickHandler}>Completed
                 </button>
             </div>
 
