@@ -3,13 +3,12 @@
   padding: 30px;
 }
 
-/*.todoList {
-  width: 500px;
-  margin: 0 auto;
+.todolist {
+  margin: 10px;
 }
 
-.todoList > div {
-  padding: 10px;
+/*.todolist > div {
+  !*padding: 10px;*!
 }*/
 .error {
   border: red 1px solid;
