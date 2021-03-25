@@ -80,8 +80,11 @@ function addTotolist(title: string) {
             title: title,
             filter: "all"
         }
-
         setTodolists([todolist, ...todolists])
+    setTasks({
+        ...tasks,
+        [todolist.id] : []
+    })
 }
 
     return (
