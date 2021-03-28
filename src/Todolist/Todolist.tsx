@@ -20,6 +20,7 @@ type PropsType = {
     addTask: (title: string, todolistId: string) => void
     filter: FilterValueType
     changeTaskStatus: (id: string, isDone: boolean, todolistId: string) => void
+    changeTaskTitle: (id: string, NewTitle: string, todolistId: string) => void
 
 }
 
@@ -56,6 +57,10 @@ const addTask = (title: string) => {
                             let newIsDoneValue = e.currentTarget.checked
                            props.changeTaskStatus(t.id, newIsDoneValue, props.id)
                         }
+                        const onChangeTitleHandler = (newValue: string) => {
+                            // let newIsDoneValue = e.currentTarget.checked
+                           props.changeTaskTitle(t.id, newValue, props.id)
+                        }
                         return <li key={t.id}
                                    className={t.isDone ? "is-done" : ''}
                         >
@@ -63,7 +68,7 @@ const addTask = (title: string) => {
                                    onChange={onChangeHandler}
                                    checked={t.isDone}
                             />
-                            <EditableSpan title={t.title}/>
+                            <EditableSpan title={t.title} onChange={onChangeTitleHandler}/>
                             <button onClick={onClickHandler}>x</button>
                         </li>
                     }
