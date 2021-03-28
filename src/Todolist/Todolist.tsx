@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from "react";
 import {FilterValueType} from "../App";
 import {AddItemForm} from "./AddItemForm";
+// import {EditableSpan} from "./EditableSpan";
 
 export type TaskType = {
     id: string
@@ -61,7 +62,7 @@ const addTask = (title: string) => {
                                    onChange={onChangeHandler}
                                    checked={t.isDone}
                             />
-                            <span>{t.title}</span>
+                            <EditableSpan title={t.title}/>
                             <button onClick={onClickHandler}>x</button>
                         </li>
                     }
@@ -82,4 +83,13 @@ const addTask = (title: string) => {
         </div>
     )
 }
-
+type EditableSpanPropsType = {
+    title: string
+}
+function EditableSpan(props: EditableSpanPropsType) {
+    return (
+        <div>
+            <span>{props.title}</span>
+        </div>
+    )
+}
