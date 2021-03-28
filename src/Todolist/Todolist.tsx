@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from "react";
 import {FilterValueType} from "../App";
 import {AddItemForm} from "./AddItemForm";
+import {EditableSpan} from "./EditableSpan";
 // import {EditableSpan} from "./EditableSpan";
 
 export type TaskType = {
@@ -80,16 +81,6 @@ const addTask = (title: string) => {
                 </button>
             </div>
 
-        </div>
-    )
-}
-type EditableSpanPropsType = {
-    title: string
-}
-function EditableSpan(props: EditableSpanPropsType) {
-    return (
-        <div>
-            <span>{props.title}</span>
         </div>
     )
 }
