@@ -3,7 +3,7 @@ import './App.css';
 import {TaskType, Todolist} from "./Todolist/Todolist";
 import {v1} from "uuid";
 import {AddItemForm} from "./Todolist/AddItemForm";
-import {AppBar, IconButton, Typography, Button, Toolbar} from "@material-ui/core";
+import {AppBar, IconButton, Typography, Button, Toolbar, Container} from "@material-ui/core";
 import classes from "*.module.css";
 import { Menu } from '@material-ui/icons';
 
@@ -120,6 +120,7 @@ function addTodolist(title: string) {
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
+            <Container fixed>
             <AddItemForm addItem={addTodolist}/>
             {
                 todolists.map(tl => {
@@ -148,6 +149,7 @@ function addTodolist(title: string) {
                     )
                 })
             }
+            </Container>
         </div>
     );
 }
