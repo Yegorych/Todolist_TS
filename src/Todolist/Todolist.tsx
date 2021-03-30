@@ -87,13 +87,16 @@ const addTask = (title: string) => {
                 )}
             </ul>
             <div>
-                <Button variant={"outlined"} color={"primary"} className={props.filter === 'all' ? "active-filter" : ''}
+                <Button variant={props.filter === 'all' ? "outlined" : 'text'}
+                        color={"primary"}
                         onClick={onAllClickHandler}>All
                 </Button>
-                <Button variant={"outlined"} color={"inherit"} className={props.filter === 'active' ? "active-filter" : ''}
+                <Button variant={props.filter === 'active' ? "outlined" : 'text'}
+                        color={"primary"}
                         onClick={onActiveClickHandler}>Active
                 </Button>
-                <Button variant={"outlined"} color={"secondary"} className={props.filter === 'completed' ? "active-filter" : ''}
+                <Button variant={props.filter === 'completed' ? "outlined" : 'text'}
+                        color={"secondary"}
                         onClick={onCompletedClickHandler}>Completed
                 </Button>
             </div>
