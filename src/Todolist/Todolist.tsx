@@ -2,7 +2,8 @@ import React, {ChangeEvent} from "react";
 import {FilterValueType} from "../App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
-// import {EditableSpan} from "./EditableSpan";
+import {IconButton} from "@material-ui/core";
+import {Delete} from "@material-ui/icons";
 
 export type TaskType = {
     id: string
@@ -50,7 +51,9 @@ const addTask = (title: string) => {
             <h3>
                 <EditableSpan title={props.title} onChange={changeTodolistTitle}/>
 
-                <button onClick={removeTodolist }>x</button></h3>
+                <IconButton onClick={removeTodolist }>
+                    <Delete/>
+                </IconButton></h3>
 
             <AddItemForm addItem={addTask}/>
             <ul>
