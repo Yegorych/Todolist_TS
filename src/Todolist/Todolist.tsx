@@ -2,7 +2,7 @@ import React, {ChangeEvent} from "react";
 import {FilterValueType} from "../App";
 import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
-import {IconButton} from "@material-ui/core";
+import {IconButton, Button} from "@material-ui/core";
 import {Delete} from "@material-ui/icons";
 
 export type TaskType = {
@@ -51,7 +51,7 @@ const addTask = (title: string) => {
             <h3>
                 <EditableSpan title={props.title} onChange={changeTodolistTitle}/>
 
-                <IconButton aria-label={"delete"} color={"secondary"}
+                <IconButton color={"default"}
                             onClick={removeTodolist }>
                     <Delete/>
                 </IconButton></h3>
@@ -87,15 +87,15 @@ const addTask = (title: string) => {
                 )}
             </ul>
             <div>
-                <button className={props.filter === 'all' ? "active-filter" : ''}
+                <Button variant={"outlined"} color={"primary"} className={props.filter === 'all' ? "active-filter" : ''}
                         onClick={onAllClickHandler}>All
-                </button>
-                <button className={props.filter === 'active' ? "active-filter" : ''}
+                </Button>
+                <Button variant={"outlined"} color={"inherit"} className={props.filter === 'active' ? "active-filter" : ''}
                         onClick={onActiveClickHandler}>Active
-                </button>
-                <button className={props.filter === 'completed' ? "active-filter" : ''}
+                </Button>
+                <Button variant={"outlined"} color={"secondary"} className={props.filter === 'completed' ? "active-filter" : ''}
                         onClick={onCompletedClickHandler}>Completed
-                </button>
+                </Button>
             </div>
 
         </div>
