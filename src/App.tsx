@@ -124,7 +124,7 @@ function addTodolist(title: string) {
                 <Grid container>
             <AddItemForm addItem={addTodolist}/>
                 </Grid>
-                <Grid container>
+                <Grid container spacing={3}>
             {
                 todolists.map(tl => {
                     let tasksForTodolist = tasks[tl.id];
@@ -135,6 +135,7 @@ function addTodolist(title: string) {
                         tasksForTodolist = tasksForTodolist.filter(t => t.isDone === true)
                     }
                     return (
+                        <Grid item>
                         <Todolist
                             key={tl.id}
                             id={tl.id}
@@ -149,6 +150,7 @@ function addTodolist(title: string) {
                             changeTaskStatus={changeStatus}
                             changeTodolistTitle={changeTodolistTitle}
                         />
+                        </Grid>
                     )
                 })
             }
