@@ -51,7 +51,8 @@ const addTask = (title: string) => {
             <h3>
                 <EditableSpan title={props.title} onChange={changeTodolistTitle}/>
 
-                <IconButton onClick={removeTodolist }>
+                <IconButton aria-label={"delete"} color={"secondary"}
+                            onClick={removeTodolist }>
                     <Delete/>
                 </IconButton></h3>
 
@@ -77,7 +78,10 @@ const addTask = (title: string) => {
                                    checked={t.isDone}
                             />
                             <EditableSpan title={t.title} onChange={onChangeTitleHandler}/>
-                            <button onClick={onClickHandler}>x</button>
+                            <IconButton aria-label="delete"
+                                        onClick={onClickHandler}>
+                                <Delete/>
+                            </IconButton>
                         </li>
                     }
                 )}
