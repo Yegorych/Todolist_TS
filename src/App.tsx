@@ -4,7 +4,6 @@ import {TaskType, Todolist} from "./Todolist/Todolist";
 import {v1} from "uuid";
 import {AddItemForm} from "./Todolist/AddItemForm";
 import {AppBar, IconButton, Typography, Button, Toolbar, Container, Grid, Paper} from "@material-ui/core";
-import classes from "*.module.css";
 import {Menu} from '@material-ui/icons';
 
 export type FilterValueType = "all" | "active" | "completed"
@@ -44,19 +43,16 @@ function App() {
             {id: v1(), title: 'Milk', isDone: true}
         ]
     })
-
     function removeTodolist(id: string) {
         setTodolists(todolists.filter(tl => tl.id != id))
         delete tasks[id]
         setTasks({...tasks})
     }
-
     function removeTask(id: string, todolistId: string) {
         let todolistTasks = tasks[todolistId]
         tasks[todolistId] = todolistTasks.filter(t => t.id !== id)
         setTasks({...tasks})
     }
-
     function changeTodolistTitle(id: string, newTitle: string) {
         const todolist = todolists.find(tl => tl.id === id)
         if (todolist) {
@@ -64,7 +60,6 @@ function App() {
             setTodolists([...todolists])
         }
     }
-
     function addTask(title: string, todolistId: string) {
 
         let task = {id: v1(), title: title, isDone: false}
@@ -72,7 +67,6 @@ function App() {
         tasks[todolistId] = [task, ...todolistTasks]
         setTasks({...tasks})
     }
-
     function changeStatus(id: string, isDone: boolean, todolistId: string) {
         let todolistTasks = tasks[todolistId]
         let task = todolistTasks.find(t => t.id === id)
@@ -81,7 +75,6 @@ function App() {
             setTasks({...tasks})
         }
     }
-
     function changeTitle(id: string, newValue: string, todolistId: string) {
         let todolistTasks = tasks[todolistId]
         let task = todolistTasks.find(t => t.id === id)
@@ -90,7 +83,6 @@ function App() {
             setTasks({...tasks})
         }
     }
-
     function changeFilter(value: FilterValueType, todolistId: string) {
         let todolist = todolists.find(tl => tl.id === todolistId)
         if (todolist) {
@@ -98,7 +90,6 @@ function App() {
             setTodolists([...todolists])
         }
     }
-
     function addTodolist(title: string) {
         let newTodolistId = v1()
         let todolist: TodolistType = {
