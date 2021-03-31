@@ -1,4 +1,3 @@
-/*
 import {todolistsReducer} from './todolists-reducer';
 import {v1} from 'uuid';
 import {TodolistType} from '../App';
@@ -17,4 +16,3 @@ test('correct todolist should be removed', () => {
     expect(endState.length).toBe(1);
     expect(endState[0].id).toBe(todolistId2);
 });
-*/
