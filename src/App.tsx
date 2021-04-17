@@ -33,6 +33,7 @@ function App() {
             filter: 'all'
         }
     ])
+
     let [tasks, setTasks] = useState<TasksStateType>({
         [todolistId1]: [
             {id: v1(), title: 'HTML & CSS', isDone: true},
@@ -43,15 +44,19 @@ function App() {
             {id: v1(), title: 'Milk', isDone: true}
         ]
     })
-    function removeTodolist(id: string) {
-        setTodolists(todolists.filter(tl => tl.id != id))
-        delete tasks[id]
-        setTasks({...tasks})
-    }
-    function removeTask(id: string, todolistId: string) {
-        let todolistTasks = tasks[todolistId]
-        tasks[todolistId] = todolistTasks.filter(t => t.id !== id)
-        setTasks({...tasks})
+
+    function addTodolist(title: string) {
+        let newTodolistId = v1()
+        let todolist: TodolistType = {
+            id: newTodolistId,
+            title: title,
+            filter: "all"
+        }
+        setTodolists([todolist, ...todolists])
+        setTasks({
+            ...tasks,
+            [todolist.id]: []
+        })
     }
     function changeTodolistTitle(id: string, newTitle: string) {
         const todolist = todolists.find(tl => tl.id === id)
@@ -59,6 +64,24 @@ function App() {
             todolist.title = newTitle
             setTodolists([...todolists])
         }
+    }
+    function removeTodolist(id: string) {
+        setTodolists(todolists.filter(tl => tl.id != id))
+        delete tasks[id]
+        setTasks({...tasks})
+    }
+    function changeFilter(value: FilterValueType, todolistId: string) {
+        let todolist = todolists.find(tl => tl.id === todolistId)
+        if (todolist) {
+            todolist.filter = value
+            setTodolists([...todolists])
+        }
+    }
+
+    function removeTask(id: string, todolistId: string) {
+        let todolistTasks = tasks[todolistId]
+        tasks[todolistId] = todolistTasks.filter(t => t.id !== id)
+        setTasks({...tasks})
     }
     function addTask(title: string, todolistId: string) {
 
@@ -82,26 +105,6 @@ function App() {
             task.title = newValue
             setTasks({...tasks})
         }
-    }
-    function changeFilter(value: FilterValueType, todolistId: string) {
-        let todolist = todolists.find(tl => tl.id === todolistId)
-        if (todolist) {
-            todolist.filter = value
-            setTodolists([...todolists])
-        }
-    }
-    function addTodolist(title: string) {
-        let newTodolistId = v1()
-        let todolist: TodolistType = {
-            id: newTodolistId,
-            title: title,
-            filter: "all"
-        }
-        setTodolists([todolist, ...todolists])
-        setTasks({
-            ...tasks,
-            [todolist.id]: []
-        })
     }
 
     return (
