@@ -29,11 +29,7 @@ export const TodolistTitleAC = (id: string, title: string):
 export const TodolistFilterAC = (id: string, filter: FilterValueType):
     ChangeFilterActionType => ({type: 'CHANGE-FILTER', id, filter} as const);
 
-export type ActionTypes =
-    RemoveTodolistActionType
-    | AddTodolistActionType
-    | ChangeTitleActionType
-    | ChangeFilterActionType
+export type ActionTypes = RemoveTodolistActionType | AddTodolistActionType | ChangeTitleActionType | ChangeFilterActionType
 
 export const todolistsReducer = (state: Array<TodolistType>, action: ActionTypes) => {
     switch (action.type) {
